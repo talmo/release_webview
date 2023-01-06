@@ -36,9 +36,12 @@ if __name__ == "__main__":
     rls = release_checker.latest_release
     print(rls.description)
 
-    # Last three releases
+    # Last releases
     release_markdown = "-----\n".join(
-        [rls.description for rls in release_checker.releases[-3:]]
+        [
+            "# " + rls.title + "\n" + rls.description
+            for rls in release_checker.releases[:10]
+        ]
     )
 
     app = QApplication([])
